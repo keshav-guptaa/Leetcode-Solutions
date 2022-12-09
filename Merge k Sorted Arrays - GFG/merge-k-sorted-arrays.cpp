@@ -23,18 +23,15 @@ class Solution
     {
         //code here
         vector<int> ans;
-        priority_queue<int, vector<int>, greater<int>> minHeap;
         int n = arr.size();
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
-                minHeap.push(arr[i][j]);
+                ans.push_back(arr[i][j]);
             }
         }
-        while(!minHeap.empty()){
-            ans.push_back(minHeap.top());
-            minHeap.pop();
-        }
+        sort(ans.begin(), ans.end());
         return ans;
+        
     }
 };
 
