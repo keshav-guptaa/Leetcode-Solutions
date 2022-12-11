@@ -17,7 +17,7 @@ public:
             int cost = q.front().second.second;
             int stops = q.front().first;
             q.pop();
-            if(stops > k) continue;
+            if(stops > k) break;
             
             for(auto it: adj[node]){
                 int adjNode = it.first;
