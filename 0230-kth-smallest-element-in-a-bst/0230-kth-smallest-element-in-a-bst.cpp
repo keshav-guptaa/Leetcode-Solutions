@@ -12,7 +12,7 @@
 class Solution {
 public:
     void inorder(TreeNode* root, int k, int &count, int &ans, bool &f){
-        if(root == NULL) return; 
+        if(root == NULL || f == 1) return; 
         inorder(root -> left, k, count, ans, f);
         count++;
         if(count == k){
