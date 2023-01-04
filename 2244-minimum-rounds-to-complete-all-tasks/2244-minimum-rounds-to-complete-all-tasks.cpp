@@ -8,18 +8,12 @@ public:
         }
         int ans = 0;
         for(auto x: count){
-            if(x.second%3 == 0) ans += x.second/3;
-            else if(x.second%3 == 2) ans += x.second/3 + 1;
+            if(x.second == 1){
+                return -1;
+            }
+            else if(x.second%3 == 0) ans += x.second/3;
             else{
-                if(x.second == 1){
-                    ans = -1;
-                    break;
-                }
-                else{
-                    ans++;
-                    x.second -= 2;
-                    ans += x.second/3 + 1;
-                }
+                ans += x.second/3+1;
             }
         }
         return ans;
