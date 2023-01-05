@@ -12,16 +12,17 @@ public:
     
     int minimumSize(vector<int>& nums, int maxOperations) {
         int s = 1, e = *max_element(nums.begin(), nums.end());
-        int mid = s + (e-s)/2;
+        int mid = s + (e-s)/2, ans;
         //int penalty = e;
-        while(s < e){
+        while(s <= e){
             if(isPossible(nums, mid, maxOperations)){
-                e = mid;
+                e = mid-1;
+                ans = mid;
                 //penalty = mid;
             }
             else s = mid+1;
             mid = s + (e-s)/2;
         }
-        return s;
+        return ans;
     }
 };
