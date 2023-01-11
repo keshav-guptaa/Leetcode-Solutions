@@ -1,9 +1,9 @@
 class Solution {
 public:
     int stBS(vector<int> &pf, int idx){
-        int s = idx+1, e = pf.size()-2;
-        int mid = s + (e-s)/2;
-        int ans = -1;
+        int n = pf.size();
+        int s = idx+1, e = n-2;
+        int mid = s + (e-s)/2, ans = -1;
         int goal = 2*pf[idx];
         while(s <= e){
             if(pf[mid] >= goal){
