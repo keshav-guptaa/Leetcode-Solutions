@@ -1,1 +1,3 @@
-​
+For non-circular part, we have Kadane's Algo for max subarray sum, but,
+if array is circular, then, we have to calculate min subarray sum and subtract it from total sum and the max of non-circular and circular part will we the answer.
+Edge case: If all no. are negative, then (tot sum - min subarray sum) will be zero but it is not the answer, in this case answer is max subarray sum. To counter this problem we write the return statement in the code differntly.
