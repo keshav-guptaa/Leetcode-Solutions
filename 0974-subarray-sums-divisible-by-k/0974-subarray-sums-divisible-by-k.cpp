@@ -9,12 +9,11 @@ public:
         int ans = 0;
         for(int i = 0; i < n; i++){
             //cout << nums[i] << " ";
-            if(nums[i] < 0){
-                int x = abs(nums[i])/k;
-                x++;
-                nums[i] += (x*k);
-            }
+            
             nums[i] %= k;
+            if(nums[i] < 0){
+                nums[i] += k;
+            }
             //cout << nums[i] << " ";
             ans += m[nums[i]];
             //cout << ans << endl;
