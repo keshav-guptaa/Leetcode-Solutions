@@ -11,22 +11,22 @@ class Solution
     vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
     {
         // Code here
-        priority_queue< pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>> > pq;
-        vector<int> dist(V, 1e9);
-        dist[S] = 0;
-        pq.push({0, S});
         
-        while(!pq.empty()){
-            int node = pq.top().second;
-            int d = pq.top().first;
-            pq.pop();
-            for(auto it: adj[node]){
-                int edge = it[0];
-                int edgeW = it[1];
-                
-                if(edgeW + d < dist[edge]){
-                    dist[edge] = edgeW + d;
-                    pq.push({dist[edge], edge});
+        vector<int> dist(V, 1e9);
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>> > q;
+        q.push({0, S});
+        dist[S] = 0;
+        while(!q.empty()){
+            auto node = q.top();
+            int d = node.first;
+            int v = node.second;
+            q.pop();
+            for(auto x: adj[v]){
+                int u = x[0];
+                int wt = x[1];
+                if(wt + d < dist[u]){
+                    dist[u] = d + wt;
+                    q.push({dist[u], u});
                 }
             }
         }
