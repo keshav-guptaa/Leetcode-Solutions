@@ -1,8 +1,9 @@
 class Solution {
 public:
     bool canVisitAllRooms(vector<vector<int>>& rooms) {
+        int n = rooms.size();
+        vector<int> vis(n, 0);
         queue<int> q;
-        vector<int> vis(rooms.size(), 0);
         q.push(0);
         vis[0] = 1;
         while(!q.empty()){
@@ -10,18 +11,12 @@ public:
             q.pop();
             for(auto it: rooms[node]){
                 if(!vis[it]){
-                    vis[it] = 1;
                     q.push(it);
+                    vis[it] = 1;
                 }
             }
         }
-        bool f = 1;
-        for(auto it: vis){
-            if(it == 0){
-                f = 0;
-                break;
-            }
-        }
-        return f;
+        int ct = count(vis.begin(), vis.end(), 0);
+        return ct == 0;
     }
 };
