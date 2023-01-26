@@ -2,7 +2,7 @@ class Solution {
 public:
     void dfs(int i, int j, vector<vector<int>>& grid1, vector<vector<int>>& grid2, int n, int m, int drow[], int dcol[], int &f){
         grid2[i][j] = 0;
-        if(grid1[i][j] == 0) f = 0;
+        
         for(int k = 0; k < 4; k++){
             int nrow = drow[k] + i;
             int ncol = j + dcol[k];
@@ -10,7 +10,7 @@ public:
                 dfs(nrow, ncol, grid1, grid2, n, m, drow, dcol, f);
             }
         }
-        
+        if(grid1[i][j] == 0) f = 0;
     }
     
     int countSubIslands(vector<vector<int>>& grid1, vector<vector<int>>& grid2) {
