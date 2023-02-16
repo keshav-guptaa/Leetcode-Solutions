@@ -6,7 +6,7 @@ public:
             if(amt % coins[0] == 0) return 1;
             else return 0;
         }
-        if(amt == 0) return 1;
+        
         if(dp[n][amt] != -1) return dp[n][amt];
         
         int npick = f(n-1, amt, coins);
