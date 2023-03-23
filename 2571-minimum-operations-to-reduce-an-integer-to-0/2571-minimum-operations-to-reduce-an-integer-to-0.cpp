@@ -3,11 +3,16 @@ public:
     
     int minOperations(int n) {
         int res = 0;
-    for (int i = 0; i < 20; ++i)
-        if (__builtin_popcount(n + (1 << i)) < __builtin_popcount(n)) {
-            n += 1 << i;
-            ++res;
+        while (n > 0) {
+            if ((n & 3) == 3) {
+                n++;
+                res++;
+            } 
+            else {
+                res += n & 1;
+                n >>= 1;
+            }
         }
-    return res + __builtin_popcount(n);
+        return res;
     }
 };
