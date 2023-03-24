@@ -7,7 +7,7 @@ public:
             return 1e9;
         }
         
-        if(amount == 0) return 0;
+        //if(amount == 0) return 0;
         if(dp[ind][amount] != -1) return dp[ind][amount];
         
         int notPick = memoization(ind-1, amount, coins, dp);
