@@ -19,8 +19,18 @@ public:
             i++;
         }
         int x = sq.size();
-        vector<vector<int>> dp(x, vector<int>(n+1, -1));
+        vector<vector<int>> dp(x+1, vector<int>(n+1, 0));
+        for(int i = 0; i <= n; i++) dp[0][i] = 1e9;
         
-        return f(x-1, n, sq, dp);
+        for(int idx = 1; idx <= x; idx++){
+            for(int tot = 1; tot <= n; tot++){
+                int pick = 1e9;
+                if(sq[idx-1] <= tot) pick = 1 + dp[idx][tot-sq[idx-1]];
+                int npick = dp[idx-1][tot];
+                dp[idx][tot] = min(pick, npick);
+            }
+        }
+        
+        return dp[x][n];
     }
 };
