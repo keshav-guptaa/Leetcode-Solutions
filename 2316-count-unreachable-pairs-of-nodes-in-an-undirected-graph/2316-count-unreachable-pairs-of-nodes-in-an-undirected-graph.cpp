@@ -1,9 +1,9 @@
 class Solution {
 public:
-    void bfs(int node, vector<int> adj[], vector<int> &vis, int &cnt){
+    int bfs(int node, vector<int> adj[], vector<int> &vis){
         queue<int> q;
         vis[node] = 1;
-        cnt++;
+        int cnt = 1;
         q.push(node);
         
         while(!q.empty()){
@@ -17,6 +17,7 @@ public:
                 }
             }
         }
+        return cnt;
     }
     
     long long countPairs(int n, vector<vector<int>>& edges) {
@@ -26,20 +27,17 @@ public:
             adj[it[0]].push_back(it[1]);
             adj[it[1]].push_back(it[0]);
         }
-        vector<int> ct;
-        for(int i = 0; i < n; i++){
-            int cnt = 0;
-            if(!vis[i]){
-                bfs(i, adj, vis, cnt);
-                ct.push_back(cnt);
-            }
-        }
+        
         long long ans = 0;
         long long sum = 0;
-        for(auto it: ct){
-            ans += sum*it;
-            sum += it;
+        for(int i = 0; i < n; i++){
+            if(!vis[i]){
+                int x = bfs(i, adj, vis);
+                ans += sum*x;
+                sum += x;
+            }
         }
+        
         return ans;
     }
 };
