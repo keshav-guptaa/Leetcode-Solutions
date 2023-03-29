@@ -14,8 +14,17 @@ public:
     int maxSatisfaction(vector<int>& s) {
         sort(s.begin(), s.end());
         int n = s.size();
-        dp.resize(n, vector<int>(n+1, -1));
-        return f(0, 1, s);
+        dp.resize(n+1, vector<int>(n+2, 0));
+        
+        for(int idx = n-1; idx >= 0; idx--){
+            for(int time = n; time >= 1; time--){
+                int pick = time*s[idx] + dp[idx+1][time+1];
+                int npick = dp[idx+1][time];
+                dp[idx][time] = max(pick, npick);
+            }
+        }
+        
+        return dp[0][1];
         
     }
 };
