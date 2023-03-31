@@ -5,7 +5,7 @@ public:
     const int mod = 1e9 + 7;
     
     int f(int r, int c, int k, int n, int m, int K){
-        if(k == K-1) return 1;
+        if(k == K-1) return dp[r][c][k] = 1;
         if(sf[r][c] == 0) return 0;
         
         if(dp[r][c][k] != -1) return dp[r][c][k];
