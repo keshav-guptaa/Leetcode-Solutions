@@ -1,1 +1,1 @@
-​
+Explaination => https://leetcode.com/problems/number-of-ways-of-cutting-a-pizza/discuss/626573/C%2B%2B99-DP%2BTopDown%2BMemo%2BPrecomputed-Sum-or-With-Diagram-or-Explained
