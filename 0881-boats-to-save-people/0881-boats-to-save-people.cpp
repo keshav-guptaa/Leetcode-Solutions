@@ -4,18 +4,16 @@ public:
         sort(p.begin(), p.end());
         int n = p.size();
         int i = 0, j = n-1, ans = 0;
-        while(i < j){
+        while(i <= j){
+            ans++;
             if(p[i] + p[j] <= l){
-                ans++;
                 i++;
                 j--;
             }
             else{
-                ans++;
                 j--;
             }
         }
-        if(i == j) ans++;
         return ans;
         
     }
