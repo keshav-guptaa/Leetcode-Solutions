@@ -17,6 +17,7 @@ public:
         for(auto &x: cub) sort(x.begin(), x.end());
         sort(cub.begin(), cub.end(), comp);
         vector<int> h(n);
+        int mx = INT_MIN;
         for(int i = 0; i < n; i++){
             h[i] = cub[i][2];
             for(int j = 0; j < i; j++){
@@ -24,7 +25,8 @@ public:
                     if(h[j]+cub[i][2] > h[i]) h[i] = h[j] + cub[i][2];
                 }
             }
+            mx = max(mx, h[i]);
         }
-        return *max_element(h.begin(), h.end());
+        return mx;
     }
 };
