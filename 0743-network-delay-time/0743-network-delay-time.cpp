@@ -5,10 +5,11 @@ public:
         for(auto &t: times){
             adj[t[0]].push_back({t[1], t[2]});
         }
-        vector<int> dist(n+1, -1);
+        vector<int> dist(n+1, -1); 
         dist[0] = 0;
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-        pq.push({0, k}); dist[k] = 0;
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
+        pq.push({0, k}); 
+        dist[k] = 0;
         
         while(!pq.empty()){
             auto[d1, node] = pq.top();
