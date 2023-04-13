@@ -8,8 +8,7 @@ public:
         vector<int> dist(n+1, -1);
         dist[0] = 0;
         priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-        pq.push({0, k});
-        dist[k] = 0;
+        pq.push({0, k}); dist[k] = 0;
         
         while(!pq.empty()){
             auto[d1, node] = pq.top();
@@ -21,9 +20,8 @@ public:
                 }
             }
         }
-        //for(int i = 0; i <= n; i++) cout << dist[i] << " ";
-        int neg = count(dist.begin(), dist.end(), -1);
-        if(neg != 0) return -1;
-        return *max_element(dist.begin(), dist.end());
+        
+        int ans = *max_element(dist.begin(), dist.end());
+        return (count(dist.begin(), dist.end(), -1) == 0) ? ans : -1;
     }
 };
