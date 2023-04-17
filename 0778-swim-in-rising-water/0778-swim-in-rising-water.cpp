@@ -9,14 +9,10 @@ public:
         int dr[] = {-1, 0, 0, 1};
         int dc[] = {0, 1, -1, 0};
         
-        int x = 0;
         while(!pq.empty()){
             auto [t, r, c] = pq.top();
             pq.pop();
-            if(r == n-1 && c == n-1){
-                x = t;
-                break;
-            }
+            if(r == n-1 && c == n-1) return t;
             
             for(int i = 0; i < 4; i++){
                 int nr = r + dr[i], nc = c + dc[i];
@@ -28,7 +24,6 @@ public:
                 }
             }
         }
-        return x;
-    
+        return -1;
     }
 };
