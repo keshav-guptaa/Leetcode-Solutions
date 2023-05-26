@@ -20,9 +20,7 @@ public:
             }
         }
         
-        for(auto &x: s){
-            ans.push_back(x);
-        }
+        for(auto &x: s) ans.push_back(x);
         return ans;
     }
 };
