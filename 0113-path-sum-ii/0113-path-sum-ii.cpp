@@ -18,21 +18,23 @@ public:
         return !root->left && !root->right;
     }
     
-    void dfs(TreeNode* root, int target, int curr){
+    void dfs(TreeNode* root, int target){
         if(!root) return;
         temp.push_back(root->val);
-        curr += root->val;
-        if(isLeaf(root) && curr == target) ans.push_back(temp);
+        if(isLeaf(root) && target == root->val){
+            ans.push_back(temp);
+            temp.pop_back();
+            return;
+        } 
         
-        dfs(root->left, target, curr);
-        dfs(root->right, target, curr);
+        dfs(root->left, target-root->val);
+        dfs(root->right, target-root->val);
         
-        curr -= root->val;
         temp.pop_back();
     }
     
     vector<vector<int>> pathSum(TreeNode* root, int target) {
-        dfs(root, target, 0);
+        dfs(root, target);
         return ans;
     }
 };
