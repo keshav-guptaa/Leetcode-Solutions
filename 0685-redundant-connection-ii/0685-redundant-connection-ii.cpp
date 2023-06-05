@@ -32,6 +32,8 @@ public:
     //There are two cases possible:
     //1) Root got extra edge and has one parent now
     //2) Some other node got extra edge and has two parent now.
+    // In first case, it will cause formation of cycle . Thus we return the edge causing cycle 
+    // In second case, it may or may not create a cycle . But we only have to check those 2            edges that leads to increase in indegree. For this we first remove the later edge and          check if a cycle is present or not . If cyle is present this is nnot the correct edge          else its the correct edge .
     
     vector<int> findRedundantDirectedConnection(vector<vector<int>>& e) {
         int n = e.size();
@@ -48,7 +50,7 @@ public:
         }
         
         for(int i = 0; i < n; i++){
-            if(i == e2) continue;   //We are actually ignoring edge 1
+            if(i == e2) continue;   //We are actually ignoring later edge.
             if(ds.isConnected(e[i][0], e[i][1])){
                 if(e1 != -1){
                     return e[e1];
