@@ -40,23 +40,23 @@ public:
         int e1 = -1, e2 = -1;
         for(int i = 0; i < n; i++){
             if(in[e[i][1]] != -1){
-                e2 = in[e[i][1]];
-                e1 = i;
+                e1 = in[e[i][1]];
+                e2 = i;
                 break;
             }
             in[e[i][1]] = i;
         }
         
         for(int i = 0; i < n; i++){
-            if(i == e1) continue;   //We are actually ignoring edge 1
+            if(i == e2) continue;   //We are actually ignoring edge 1
             if(ds.isConnected(e[i][0], e[i][1])){
                 if(e1 != -1){
-                    return e[e2];
+                    return e[e1];
                 }
                 else return e[i];
             }
             ds.merge(e[i][0], e[i][1]);
         }
-        return e[e1];
+        return e[e2];
     }
 };
