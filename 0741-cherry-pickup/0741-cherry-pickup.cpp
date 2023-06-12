@@ -2,6 +2,8 @@ class Solution {
 public:
     int f(int r1, int c1, int r2, vector<vector<int>>& grid, vector<vector<vector<int>>> &dp,
          int n){
+        //Distance of both robot starting from (0, 0) should be same from (0, 0), by this logic 
+        //r1+c1 == r2+c2.
         int c2 = (r1+c1)-r2;
         if(r1 >= n || r2 >= n || c1 >= n || c2 >= n || grid[r1][c1] == -1 || grid[r2][c2] == -1) return INT_MIN;
         if(r1 == n-1 && c1 == n-1) return grid[r1][c1];
