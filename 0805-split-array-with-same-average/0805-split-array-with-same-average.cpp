@@ -11,9 +11,12 @@ public:
                                || findSubset(nums, dp, i-1, size, sum);
    }
    bool splitArraySameAverage(vector<int>& nums) {
-       int sum = reduce(nums.begin(), nums.end());
+       
+       //int sum = reduce(nums.begin(), nums.end());
        int n = nums.size();  
-       // dp[index][subarray_size][subarray_sum]
+       int sum = 0;
+       for(auto &x: nums) sum += x;
+       // dp[index][subsequence_size][subsequence_sum]
        vector<vector<vector<bool>>> dp(n, vector<vector<bool>>(n+1, vector<bool>(sum+1, true)));
 
        for (int size = 1; size < n; size++) {
