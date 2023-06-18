@@ -6,14 +6,15 @@ using namespace std;
 class Solution {
   public:
     int memo(int day, int last, vector<vector<int>>& points, vector<vector<int>>& dp){
+        if(day < 0) return 0;
         if(dp[day][last] != -1) return dp[day][last];
-        if(day == 0){
+        /*if(day == 0){
             int mx = 0;
             for(int i = 0; i <= 2; i++){
                 if(i != last) mx = max(mx, points[day][i]);
             }
             return dp[day][last] = mx;
-        }
+        }*/
         int mx = 0;
         for(int i = 0; i <= 2; i++){
             if(i != last){
