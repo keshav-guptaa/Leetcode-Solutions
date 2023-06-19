@@ -1,22 +1,20 @@
 class Solution {
 public:
+    int dp[505][505][2];
     
-    int f(int s, int e, vector<int>& p, vector<vector<int>>& dp){
+    int f(int s, int e, int id, vector<int>& p){
         if(s > e) return 0;
-        if(dp[s][e] != -1) return dp[s][e];
+        if(dp[s][e][id] != -1) return dp[s][e][id];
         
-        int b = p[s] + min(f(s+2, e, p, dp), f(s+1, e-1, p, dp));
-        int l = p[e] + min(f(s+1, e-1, p, dp), f(s, e-2, p, dp));
-        
-        return dp[s][e] = max(b, l);
+        int ans = 0;
+        if(id) ans = max(p[s]+f(s+1, e, 1-id, p), p[e]+f(s, e-1, 1-id, p));
+        else ans = min(-p[s]+f(s+1, e, 1-id, p), -p[e]+f(s, e-1, 1-id, p));
+        return dp[s][e][id] = ans;
     }
     
     bool stoneGame(vector<int>& p) {
         int n = p.size();
-        vector<vector<int>> dp(n, vector<int>(n, -1));
-        int a = f(0, n-1, p, dp);
-        int sum = 0;
-        for(int i = 0; i < n; i++) sum += p[i];
-        return a > sum - a;
+        memset(dp, -1, sizeof dp);
+        return f(0, n-1, 1, p);
     }
 };
