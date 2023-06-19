@@ -1,1 +1,1 @@
-always take min logically
+​
