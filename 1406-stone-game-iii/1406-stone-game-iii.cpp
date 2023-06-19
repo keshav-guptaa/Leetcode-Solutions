@@ -25,6 +25,8 @@ public:
         int n = p.size();
         vector<vector<int>> dp(n, vector<int>(2, -1));
         int score = f(0, 1, p, dp);
-        return score > 0 ? "Alice" : score == 0 ? "Tie" : "Bob";
+        if (score > 0) return "Alice";
+        if (score < 0) return "Bob";
+        return "Tie";
     }
 };
