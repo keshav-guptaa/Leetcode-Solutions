@@ -26,8 +26,31 @@ public:
     string stoneGameIII(vector<int>& p) {
         int n = p.size();
         //vector<vector<int>> dp(n, vector<int>(2, -1));
-        memset(dp, -1, sizeof dp);
-        int score = f(0, 1, p);
+        //memset(dp, -1, sizeof dp);
+        memset(dp, 0, sizeof dp);
+        
+        for(int idx = n-1; idx >= 0; idx--){
+            for(int id = 0; id <= 1; id++){
+                int score = id ? INT_MIN : INT_MAX;
+                int sum = 0;
+                if(id){
+                    for(int i = 0; i <= 2; i++){
+                        if(idx+i < p.size()) sum += p[idx+i];
+                        score = max(score, sum + dp[idx+i+1][1-id]);
+                    }
+                }
+                else{
+                    for(int i = 0; i <= 2; i++){
+                        if(idx+i < p.size()) sum += p[idx+i];
+                        score = min(score, -sum + dp[idx+i+1][1-id]);
+                    }
+                }
+                dp[idx][id] = score;
+            }
+        }
+        
+        
+        int score = dp[0][1];
         if (score > 0) return "Alice";
         if (score < 0) return "Bob";
         return "Tie";
