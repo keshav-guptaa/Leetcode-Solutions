@@ -3,12 +3,12 @@ public:
     int dp[105][105];
     
     int f(int i, int j, vector<int> &cuts){
-        if(i>j) return 0;
+        if(i >= j-1) return 0;
         if(dp[i][j] != -1) return dp[i][j];
         
         int ans = INT_MAX;
-        for(int k = i; k <= j; k++){
-            int temp = cuts[j+1] - cuts[i-1] + f(i, k-1, cuts) + f(k+1, j, cuts);
+        for(int k = i+1; k < j; k++){
+            int temp = cuts[j] - cuts[i] + f(i, k, cuts) + f(k, j, cuts);
             ans = min(ans, temp);
         }
         return dp[i][j] = ans;
@@ -19,6 +19,6 @@ public:
         cuts.push_back(n);
         sort(cuts.begin(), cuts.end());
         memset(dp, -1, sizeof(dp));
-        return f(1, cuts.size()-2, cuts);
+        return f(0, cuts.size()-1, cuts);
     }
 };
