@@ -1,21 +1,10 @@
 class Solution {
 public:
-    static bool comp(vector<int> &a, vector<int> &b){
-        if(a[0] < b[0]) return true;
-        else if(a[0] == b[0]){
-            if(a[1] < b[1]) return true;
-            else if(a[1] == b[1]){
-                if(a[2] < b[2]) return true;
-                return false;
-            }
-        }
-        return false;
-    }
     
     int maxHeight(vector<vector<int>>& cub) {
         int n = cub.size();
         for(auto &x: cub) sort(x.begin(), x.end());
-        sort(cub.begin(), cub.end(), comp);
+        sort(cub.begin(), cub.end());
         vector<int> h(n);
         int mx = INT_MIN;
         for(int i = 0; i < n; i++){
