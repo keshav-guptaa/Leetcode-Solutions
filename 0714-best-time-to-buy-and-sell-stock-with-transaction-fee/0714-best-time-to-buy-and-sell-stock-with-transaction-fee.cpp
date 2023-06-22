@@ -13,6 +13,7 @@ public:
         return dp[idx][buy] = profit;
     }
     int maxProfit(vector<int>& p, int fee) {
+        int n = p.size();
         vector<vector<int>> dp(p.size()+1, vector<int>(2, -1));
         return f(0, 1, p, dp, fee);
     }
