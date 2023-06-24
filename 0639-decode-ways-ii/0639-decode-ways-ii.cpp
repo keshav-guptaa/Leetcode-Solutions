@@ -32,6 +32,6 @@ public:
     int numDecodings(string s) {
         int n = s.length();
         dp.resize(n, -1);
-        return f(0, s)%mod;
+        return f(0, s);
     }
 };
