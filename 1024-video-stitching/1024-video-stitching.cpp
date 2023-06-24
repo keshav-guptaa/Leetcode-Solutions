@@ -14,7 +14,7 @@ public:
                 currReach = maxReach;
                 ct++;
             }
-            if(currReach == time) return ct;
+            if(currReach >= time) return ct;
         }
         return -1;
     }
