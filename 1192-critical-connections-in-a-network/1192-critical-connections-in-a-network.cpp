@@ -13,6 +13,9 @@ public:
                 low[node] = min(low[node], low[it]);
                 if(low[it] > tin[node]) bridges.push_back({node, it});
             }
+            // why we don't check for bridge in the following condition =>
+            // because this adj. node is not parent and it is visited also, hence, both
+            // of these are part of cycle and every node present in a cycle can't be a bridge.
             else low[node] = min(low[node], low[it]);
         }
     }
