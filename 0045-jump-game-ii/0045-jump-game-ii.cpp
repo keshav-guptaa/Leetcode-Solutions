@@ -2,18 +2,23 @@ class Solution {
 public:
     int jump(vector<int>& nums) {
         int n = nums.size();
-        vector<int> pf(n);
-        int prev = 0;
-        for(int i = 0; i < n; i++){
-            prev = max(prev, i + nums[i]);
-            pf[i] = prev;
+        
+        int jumps = 0;
+        int maxReach = 0;
+        int currReach = 0;
+        
+        for(int i=0; i<n-1; i++)
+        {
+            maxReach = max(maxReach, i+nums[i]);
+            
+            if(i==currReach)
+            {
+                jumps++;
+                currReach = maxReach;
+            }
+            
         }
-        int jump = 0;
-        int curr = 0;
-        while(curr < n-1){
-            jump++;
-            curr = pf[curr];
-        }
-        return jump;
+        
+        return jumps;
     }
 };
