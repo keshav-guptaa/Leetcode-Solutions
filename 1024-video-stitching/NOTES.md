@@ -1,0 +1,1 @@
+Solution => https://leetcode.com/problems/video-stitching/discuss/2665151/C%2B%2B-oror-Commented-Explanation-oror-Greedy-Approach
