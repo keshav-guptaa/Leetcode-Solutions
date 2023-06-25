@@ -8,7 +8,7 @@ public:
         
         long long ways = city == finish ? 1: 0;
         for(int i = 0; i < l.size(); i++){
-            if(i != city && abs(l[i]-l[city]) <= fuel){
+            if(i != city){
                 ways += f(i, fuel-abs(l[i]-l[city]), finish, l, dp);
                 ways %= mod;
             }
