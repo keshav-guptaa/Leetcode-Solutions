@@ -1,6 +1,6 @@
-class TrieNode{
+struct TrieNode{
   public:
-    int cp;
+    int cp = 0;
     TrieNode* dict[26] = {};
 };
 
