@@ -2,11 +2,8 @@ class Solution {
 public:
     vector<string> wordBreak(string s, vector<string>& wordDict) {
         //insert all the words in the set
-        unordered_set<string> set;
+        unordered_set<string> set(wordDict.begin(), wordDict.end());
         vector<string> res;
-        for(auto word:wordDict)
-            set.insert(word);
-        //to store the current string 
         string curr="";
         findHelper(0,s,curr,set,res);
         return res;
