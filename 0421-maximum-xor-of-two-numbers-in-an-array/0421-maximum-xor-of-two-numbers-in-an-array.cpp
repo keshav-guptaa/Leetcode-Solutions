@@ -1,5 +1,5 @@
 struct TrieNode{
-    TrieNode* bits[2] = {};  
+    TrieNode* bits[2];  
 };
 
 class Solution {
