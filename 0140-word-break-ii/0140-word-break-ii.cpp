@@ -24,7 +24,7 @@ public:
         for(int i=ind;i<s.length();i++)
         {
             //get every substring and check if it exists in set
-            str.push_back(s[i]);
+            str += s[i];
             if(set.count(str))
             {
                 //we have got a word in dict 
