@@ -16,9 +16,7 @@ public:
                 int top = pq.top();
                 pq.pop();
                 --top;
-                if(top > 0){
-                    q.push({top, time + n + 1});
-                }
+                if(top > 0) q.push({top, time + n + 1});
             }
             if(q.empty() && pq.empty()) break;
         }
