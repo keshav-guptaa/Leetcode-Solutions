@@ -7,8 +7,8 @@ public:
         for(auto &it: m) pq.push(it.second);
         queue<pair<int, int>> q; //Task freq, time
         int time = 1;
-        for (; ; time++) {
-            if (!q.empty() && q.front().second <= time) {
+        for(; ; time++){
+            if(!q.empty() && q.front().second <= time){
                 pq.push(q.front().first);
                 q.pop();
             }
