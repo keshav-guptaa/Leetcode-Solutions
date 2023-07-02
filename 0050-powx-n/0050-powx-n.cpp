@@ -14,11 +14,13 @@ public:
         // Perform Binary Exponentiation.
         // If 'n' is odd we perform Binary Exponentiation on 'n - 1' and multiply result with 'x'.
         if (n % 2 == 1) {
-            return x * binaryExp(x * x, (n - 1) / 2);
+            double z = binaryExp(x, n/2);
+            return z*x*z ;
         }
         // Otherwise we calculate result by performing Binary Exponentiation on 'n'.
         else {
-            return binaryExp(x * x, n / 2);
+            double z = binaryExp(x, n / 2);
+            return z*z;
         }
     }
 
