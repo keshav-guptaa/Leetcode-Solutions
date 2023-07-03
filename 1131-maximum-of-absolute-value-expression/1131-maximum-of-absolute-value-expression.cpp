@@ -18,6 +18,6 @@ public:
             sum2[i]=arr1[i]+arr2[i]-i;
             diff2[i]=arr1[i]-arr2[i]-i;
         }
-        return max(max(fun(sum1,n),fun(diff1,n)),max(fun(sum2,n),fun(diff2,n)));        
+        return max({fun(sum1,n),fun(diff1,n),fun(sum2,n),fun(diff2,n)});        
     }
 };
