@@ -26,7 +26,7 @@ public:
         Node* nextNode = node->next;
         prevNode->next = nextNode;
         nextNode->prev = prevNode;
-        //delete node;
+        delete node;
     }
     
     void insert(Node* node){
