@@ -18,7 +18,7 @@ public:
                 auto [time, room] = pq1.top();
                 pq1.pop();
                 m[room]++;
-                pq1.push({time+0LL+meet[i][1]-meet[i][0], room});
+                pq1.push({time+meet[i][1]-meet[i][0], room});
             }
             else{
                 m[pq2.top()]++;
