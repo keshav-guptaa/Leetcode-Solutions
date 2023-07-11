@@ -1,9 +1,9 @@
 class Solution {
 public:
     int atMost(vector<int>& nums, int k){
-        int ans = 0, n = nums.size(), j = 0;
+        int ans = 0, n = nums.size(), j = 0, i = 0;
         map<int, int> m;
-        for(int i = 0; i < n; i++){
+        while(i < n){
             m[nums[i]]++;
             if(m[nums[i]] == 1) k--;
             while(k < 0){
@@ -12,6 +12,7 @@ public:
                 j++;
             }
             ans += (i-j+1);
+            i++;
         }
         return ans;
     }
