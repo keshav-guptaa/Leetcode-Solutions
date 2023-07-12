@@ -14,15 +14,15 @@ public:
     string serialize(TreeNode* root) {
         
         if(!root) return "";
-        string s;
+        string s = "";
         queue<TreeNode*> q;
         q.push(root);
         while(!q.empty()){
             auto node = q.front();
             q.pop();
-            if(node == NULL) s.append("#,");
+            if(node == NULL) s += "#,";
             else{
-                s.append(to_string(node->val)+',');
+                s += to_string(node->val)+',';
                 q.push(node->left);
                 q.push(node->right);
             } 
