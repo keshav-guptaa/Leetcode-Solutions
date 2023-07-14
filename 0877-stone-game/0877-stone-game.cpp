@@ -15,6 +15,7 @@ public:
     bool stoneGame(vector<int>& p) {
         int n = p.size();
         memset(dp, -1, sizeof dp);
-        return f(0, n-1, 1, p);
+        int ans = f(0, n-1, 1, p);
+        return ans > 0 ? 1: 0;
     }
 };
