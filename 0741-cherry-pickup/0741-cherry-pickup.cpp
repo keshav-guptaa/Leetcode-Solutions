@@ -26,6 +26,7 @@ public:
         int n = grid.size();
         vector<vector<vector<int>>> dp(n, vector<vector<int>>(n, vector<int>(n, -1)));
         int ans = f(0, 0, 0, grid, dp, n);
+        //return ans;
         return ans < 0 ? 0 : ans;
     }
 };
