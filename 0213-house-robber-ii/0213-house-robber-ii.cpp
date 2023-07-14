@@ -1,27 +1,19 @@
 class Solution {
 public:
-    int calc(vector<int>& nums) {
-        int n = nums.size();
-        int prev = nums[0];
-        int prev2 = 0;
-        for(int i = 1; i < n; i++){
-            int p = nums[i] + prev2;
-            int np = prev;
-            int curr = max(p, np);
-            prev2 = prev;
-            prev = curr;
-        }
-        return prev;
-        
+    int houseRobber(vector<int>& nums) {
+        int dp[nums.size()+1];
+        dp[0] = nums[0];
+        dp[1] = max(nums[0], nums[1]);
+        for (int i=2; i<nums.size(); i++) dp[i] = max(dp[i-1], nums[i]+dp[i-2]);
+        return dp[nums.size()-1];
     }
     
     int rob(vector<int>& nums) {
-        if(nums.size() == 1) return nums[0];
-        vector<int> temp1, temp2;
-        for(int i = 0; i < nums.size(); i++){
-            if(i != 0) temp1.push_back(nums[i]);
-            if(i != nums.size()-1) temp2.push_back(nums[i]);
-        }
-        return max(calc(temp1), calc(temp2));
+        if (nums.size() == 1) return nums[0];
+        if (nums.size() == 2) return max(nums[0], nums[1]);
+        
+        vector<int> v1(nums.begin(), nums.end()-1);
+        vector<int> v2(nums.begin()+1, nums.end());
+        return max(houseRobber(v1), houseRobber(v2));
     }
 };
