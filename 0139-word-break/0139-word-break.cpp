@@ -1,18 +1,18 @@
 class Solution {
+ 
 public:
+    map<string,bool> m;
     bool wordBreak(string s, vector<string>& wordDict) {
-        int n = s.length();
-        vector<int> dp(n+1, 0);
-        dp[0] = 1;
-        
-        for(int i = 1; i <= n; i++){
-            for(int j = 0; j < i; j++){
-                if((dp[j]) && (find(wordDict.begin(), wordDict.end(), s.substr(j, i-j)) != wordDict.end())){
-                    dp[i] = 1;
-                    break;
-                } 
+        if(find(wordDict.begin(), wordDict.end(), s) != wordDict.end()) return true;
+        if(m.find(s) != m.end()) return m[s];
+        for(int i=1; i<s.size(); i++){
+            string left = s.substr(0,i);
+            if(find(wordDict.begin(),wordDict.end(),left) != wordDict.end() && wordBreak(s.substr(i),wordDict)){
+                return m[s] = true;
             }
         }
-        return dp[n];
+   
+        return m[s] = false;
     }
+    
 };
