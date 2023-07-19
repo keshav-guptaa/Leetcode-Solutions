@@ -1,49 +1,24 @@
 class Solution {
 public:
-    int backtrack(vector<int>& nums, int mask, int pairsPicked, vector<int>& memo) {
-        // If we have picked all the numbers from 'nums' array, we can't get more score.
-        if (2 * pairsPicked == nums.size()) {
-            return 0;
-        }
-
-        // If we already solved this sub-problem then return the stored result.
-        if (memo[mask] != -1) {
-            return memo[mask];
-        }
-
-        int maxScore = 0;
-
-        // Iterate on 'nums' array to pick the first and second number of the pair.
-        for (int firstIndex = 0; firstIndex < nums.size(); ++firstIndex) {
-            for (int secondIndex = firstIndex + 1; secondIndex < nums.size(); ++secondIndex) {
-    
-                // If the numbers are same, or already picked, then we move to next number.
-                if (((mask >> firstIndex) & 1) == 1 or ((mask >> secondIndex) & 1) == 1) {
-                    continue;
-                }
-
-                // Both numbers are marked as picked in this new mask.
-                int newMask = mask | (1 << firstIndex) | ((1 << secondIndex));
-
-                // Calculate score of current pair of numbers, and the remaining array.
-                int currScore = (pairsPicked + 1) * __gcd(nums[firstIndex], nums[secondIndex]);
-                int remainingScore = backtrack(nums, newMask, pairsPicked + 1, memo);
-
-                // Store the maximum score.
-                maxScore = max(maxScore, currScore + remainingScore);
-                // We will use old mask in loop's next interation, 
-                // means we discarded the picked number and backtracked.
+    int f(int mask, int ops, vector<int>& nums, unordered_map<int, int>& dp){
+        int n = nums.size()/2, m = n*2;
+        if(ops > n) return 0;
+        if(dp.find(mask) != dp.end()) return dp[mask];
+        
+        for(int i = 0; i < m; i++){
+            if((mask & (1 << i))) continue;
+            for(int j = i+1; j < m; j++){
+                if(mask & (1 << j)) continue;
+                int newMask = (1 << i) | (1 << j) | mask;
+                int score = ops*__gcd(nums[i], nums[j]) + f(newMask, ops+1, nums, dp);
+                dp[mask] = max(dp[mask], score);
             }
         }
-
-        // Store the result of the current sub-problem.
-        memo[mask] = maxScore;
-        return maxScore;
+        return dp[mask];
     }
-
+    
     int maxScore(vector<int>& nums) {
-        int memoSize = 1 << nums.size(); // 2^(nums array size)
-        vector<int> memo(memoSize, -1);
-        return backtrack(nums, 0, 0, memo);
+        unordered_map<int, int> dp;
+        return f(0, 1, nums, dp);
     }
 };
