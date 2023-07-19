@@ -1,23 +1,18 @@
 class Solution {
 public:
-    
-    int memodp(int n,vector<int> &dp){
-        if(n==0) return 0;
+    int f(int num, vector<int>& dp){
+        if(num == 0) return 0;
+        if(dp[num] != -1) return dp[num];
         
-        if(dp[n]!=-1){
-            return dp[n];
+        int mn = 1e9;
+        for(int i = 1; i*i <= num; i++){
+            mn = min(mn, 1 + f(num-i*i, dp));
         }
-        
-        int minvalue=INT_MAX;
-        for(int i=1;i*i<=n;i++){
-            int minperfectsquarepro=memodp(n-i*i,dp);
-            minvalue=min(minvalue,minperfectsquarepro+1);
-        }
-        
-        return dp[n] = minvalue;  
+        return dp[num] = mn;
     }
+    
     int numSquares(int n) {
-        vector<int>dp(n+1,-1);
-        return memodp(n,dp);
+        vector<int> dp(n+1, -1);
+        return f(n, dp);
     }
 };
