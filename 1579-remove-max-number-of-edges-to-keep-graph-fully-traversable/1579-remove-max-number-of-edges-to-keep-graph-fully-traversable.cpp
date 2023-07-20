@@ -21,8 +21,7 @@ class DSU {
     }
 
     void unite(int u, int v) {
-        int p_u = find(u); 
-        int p_v = find(v); 
+        int p_u = find(u), p_v = find(v); 
         if(size[p_v] > size[p_u]) swap(p_u, p_v);
         parent[p_v] = p_u;
         size[p_u] += size[p_v]; 
