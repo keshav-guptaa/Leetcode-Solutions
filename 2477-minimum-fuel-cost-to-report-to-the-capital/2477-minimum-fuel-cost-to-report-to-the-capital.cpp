@@ -1,23 +1,15 @@
 class Solution {
 public:
-    long long fuel;
-
-    long long dfs(int node, int parent, vector<vector<int>>& adj, int& seats) {
-        // The node itself has one representative.
-        int representatives = 1;
-        for (auto& child : adj[node]) {
-            if (child != parent) {
-                // Add count of representatives in each child subtree to the parent subtree.
-                representatives += dfs(child, node, adj, seats);
-            }
+    long long fuel = 0;
+    
+    long long dfs(int node, int par, vector<vector<int>>& adj, int seats){
+        long long people = 1;
+        for(auto &it: adj[node]){
+            if(it == par) continue;
+            people += dfs(it, node, adj, seats);
         }
-
-        if (node != 0) {
-            // Count the fuel it takes to move to the parent node.
-            // Root node does not have any parent so we ignore it.
-            fuel += ceil((double)representatives / seats);
-        }
-        return representatives;
+        if(node != 0) fuel += (people + seats - 1)/seats;
+        return people;
     }
 
     long long minimumFuelCost(vector<vector<int>>& roads, int seats) {
