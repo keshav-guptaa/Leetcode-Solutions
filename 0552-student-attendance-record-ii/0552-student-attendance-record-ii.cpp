@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //index, absent, late
     int dp[100005][3][4];
     const int mod = 1e9+7;
     
