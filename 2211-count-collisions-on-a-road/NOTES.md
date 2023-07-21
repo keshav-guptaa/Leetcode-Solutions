@@ -1,1 +1,2 @@
-​
+Solution => https://leetcode.com/problems/count-collisions-on-a-road/discuss/1865868/C%2B%2B-or-Stack-or-O(n)-or-One-for-loop
+Edge case for me if Right left collided to become 'S' or L collided with 'S', we have to push 'S' hence we have to process all 'R' present in the stack to get the answer
