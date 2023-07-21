@@ -12,9 +12,12 @@ public:
                     if(st.top() == 'S') ans++;
                     else{
                         ans += 2;
-                        d[i] = 'S';
-                        i--;
                         st.pop();
+                        while(!st.empty() && st.top() == 'R'){
+                            ans++;
+                            st.pop();
+                        }
+                        st.push('S');
                     }
                 }
             }
@@ -23,9 +26,12 @@ public:
                     if(st.top() == 'S') st.push(d[i]);
                     else{
                         ans++;
-                        d[i] = 'S';
-                        i--;
                         st.pop();
+                        while(!st.empty() && st.top() == 'R'){
+                            ans++;
+                            st.pop();
+                        }
+                        st.push('S');
                     }
                 }
                 else st.push(d[i]);
