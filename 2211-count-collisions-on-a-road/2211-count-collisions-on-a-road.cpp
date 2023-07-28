@@ -25,8 +25,6 @@ public:
                 if(!st.empty()){
                     if(st.top() == 'S') st.push(d[i]);
                     else{
-                        ans++;
-                        st.pop();
                         while(!st.empty() && st.top() == 'R'){
                             ans++;
                             st.pop();
