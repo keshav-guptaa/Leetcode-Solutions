@@ -3,10 +3,7 @@ public:
     vector<int> dp;
     
     int f(int idx, vector<vector<int>>& p, int cmp){
-        if(idx == 0){
-            if(p[idx][1] < cmp) return 1;
-            return 0;
-        }
+        if(idx < 0) return 0;
         if(dp[idx] != -1) return dp[idx];
         
         int pick = 0;
