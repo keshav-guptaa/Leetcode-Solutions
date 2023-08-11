@@ -19,7 +19,7 @@ public:
     
     int mincostTickets(vector<int>& days, vector<int>& costs) {
         int n = days.size();
-        dp.resize(n+1, -1);
+        dp.resize(n, -1);
         return f(0, days, costs);
     }
 };
