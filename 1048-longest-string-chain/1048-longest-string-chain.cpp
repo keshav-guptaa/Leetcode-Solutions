@@ -8,16 +8,14 @@ public:
             first++;
         }
         if(first == s1.size() && second == s2.size()) return true;
-        else return false;
-    }
-    
-    static bool comp(string &s1, string &s2){
-        return (s1.length() < s2.length());
+        return false;
     }
     
     int longestStrChain(vector<string>& words) {
         int n = words.size();
-        sort(words.begin(), words.end(), comp);
+        sort(words.begin(), words.end(), [](string &s1, string &s2){
+            return (s1.length() < s2.length());
+        });
         vector<int> dp(n,1);
         int maxi = 1;
         for(int i = 0; i < n; i++){
