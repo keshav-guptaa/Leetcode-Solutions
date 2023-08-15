@@ -9,13 +9,14 @@ public:
         }
     	if (k < 0) {
     	    reverse(nums.begin(), nums.end());
-    	} else {
+    	} 
+        else {
     	    for (l = n - 1; l > k; l--) {
                 if (nums[l] > nums[k]) {
+                    swap(nums[k], nums[l]);
                     break;
                 }
             } 
-    	    swap(nums[k], nums[l]);
     	    reverse(nums.begin() + k + 1, nums.end());
         }
     }
