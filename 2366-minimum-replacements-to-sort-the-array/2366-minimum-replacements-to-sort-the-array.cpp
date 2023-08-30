@@ -9,11 +9,8 @@ public:
                 mn = nums[i];
             }
             else{
-                int tot = nums[i]/mn;
-                if(nums[i] % mn != 0){
-                    tot++;
-                    mn = nums[i]/tot;
-                }
+                int tot = (nums[i]+mn-1)/mn;
+                if(nums[i] % mn != 0) mn = nums[i]/tot;
                 ops += tot-1;
             }
         }
