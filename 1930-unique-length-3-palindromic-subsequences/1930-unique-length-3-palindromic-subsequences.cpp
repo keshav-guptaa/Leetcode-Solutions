@@ -3,7 +3,7 @@ public:
     int countPalindromicSubsequence(string s) {
         int ct = 0;
         for(int i = 0; i < 26; i++){
-            set<char> st;
+            unordered_set<char> st;
             bool f = 0, f1 = 0;
             int ans = 0;
             for(auto &it: s){
