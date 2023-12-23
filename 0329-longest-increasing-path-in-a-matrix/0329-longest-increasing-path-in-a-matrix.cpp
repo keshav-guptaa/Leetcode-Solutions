@@ -21,8 +21,11 @@ public:
         int ans = 0;
         for(int i = 0; i < n; i++){
             for(int j = 0; j < m; j++){
-                ans = max(ans, dfs(i, j, dp, mat, n, m));
+                int z = dfs(i, j, dp, mat, n, m);
+                ans = max(ans, z);
+                //cout << z << " ";
             }
+            cout << endl;
         }
         return ans;
     }
