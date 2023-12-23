@@ -16,6 +16,7 @@ public:
         while (!destinations.empty()) {
             string nextDestination = destinations.back();
             destinations.pop_back();
+            //itinerary.push_back(airport);
             dfs(nextDestination);
         }
         
