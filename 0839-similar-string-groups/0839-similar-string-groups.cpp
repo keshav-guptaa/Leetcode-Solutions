@@ -17,6 +17,8 @@ public:
         }
     }
     
+    
+    //Convert question into connected components
     int numSimilarGroups(vector<string>& strs) {
         int n = strs.size();
         vector<int> adj[n];
