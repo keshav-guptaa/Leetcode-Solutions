@@ -16,7 +16,7 @@ public:
     }
     
     int numRollsToTarget(int n, int k, int target) {
-        memset(dp, -1, sizeof(dp));
+        memset(dp, -1, sizeof dp);
         return f(n, target, k);
     }
 };
