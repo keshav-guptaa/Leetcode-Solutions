@@ -14,7 +14,7 @@ public:
             auto [t, r, c] = pq.top();
             pq.pop();
             if(r == n-1 && c == m-1) return t;
-            if(time[r][c] > t) continue;
+            //if(time[r][c] > t) continue;
             
             for(int i = 0; i < 4; i++){
                 int nr = r + dr[i], nc = c + dc[i];
