@@ -1,8 +1,10 @@
 class Solution {
 public:
+    //solved using hints, just draw the graph and got the answers
     vector<int> dp, ans;
     vector<vector<int>> adj;
     
+    //To calculate dp
     int dfs(int node, int par){
         dp[node] = 0;
         for(auto &it: adj[node]){
@@ -13,6 +15,7 @@ public:
         return dp[node];
     }
     
+    //To calculate ans
     void dfs2(int node, int par){
         for(auto &it: adj[node]){
             if(abs(it) == par) continue;
