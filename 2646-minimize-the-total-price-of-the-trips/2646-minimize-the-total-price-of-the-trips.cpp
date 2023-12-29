@@ -3,6 +3,7 @@ public:
     vector<vector<int>> adj;
     int freq[100];
     
+    //To count the occurences of each node in trips
     bool dfs(int node, int par, int end){
         if(node == end){
             freq[node]++;
@@ -18,6 +19,7 @@ public:
         return 0;
     }
     
+    //To calculate cost by trying all possibilties 
     pair<int, int> findPrice(int node, int par, vector<int>& p){
         int half = (p[node]/2)*freq[node];
         int nothalf = p[node]*freq[node];
@@ -37,7 +39,6 @@ public:
             adj[it[0]].push_back(it[1]);
             adj[it[1]].push_back(it[0]);
         }
-        
         //To count the occurences of each node in trips
         for(auto &it: trips){
             int st = it[0], dst = it[1];
