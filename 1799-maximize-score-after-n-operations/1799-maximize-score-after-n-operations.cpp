@@ -6,7 +6,7 @@ public:
         if(dp.find(mask) != dp.end()) return dp[mask];
         
         for(int i = 0; i < m; i++){
-            if((mask & (1 << i))) continue;
+            if(mask & (1 << i)) continue;
             for(int j = i+1; j < m; j++){
                 if(mask & (1 << j)) continue;
                 int newMask = (1 << i) | (1 << j) | mask;
