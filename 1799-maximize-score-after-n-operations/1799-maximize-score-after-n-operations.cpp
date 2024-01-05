@@ -3,7 +3,7 @@ public:
     int f(int mask, int ops, vector<int>& nums, unordered_map<int, int>& dp){
         int n = nums.size()/2, m = n*2;
         if(ops > n) return 0;
-        if(dp.find(mask) != dp.end()) return dp[mask];
+        if(dp.count(mask)) return dp[mask];
         
         for(int i = 0; i < m; i++){
             if(mask & (1 << i)) continue;
