@@ -1,22 +1,39 @@
 class Solution {
-public:
-    int dp[101][101];
-    int dfs(string &s, int left, int K) {
-        int k = K;
-        if(s.size() - left <= k) return 0;
-        if(dp[left][k] >= 0) return dp[left][k];
-        int res = k ? dfs(s, left + 1, k - 1) : 10000, c = 1;
-        for(int i = left + 1; i <= s.size(); ++i) {
-            res = min(res, dfs(s, i, k) + 1 + (c >= 100 ? 3 : (c >= 10 ? 2 : (c > 1 ? 1 :0))));
-            if(i == s.size()) break;
-            if(s[i] == s[left]) ++c;
-            else if(--k < 0) break;
+    const static int N = 127;
+
+    // dp[left][k] means the minimal coding size for substring 
+    // s[left:] and removing at most k chars
+    int dp[N][N];
+
+    string str;
+    int n;
+
+    // get length of digit
+    inline int xs(int x) { return x == 1 ? 0 : x < 10 ? 1 : x < 100 ? 2 : 3; }
+
+    int solve(int left, int k) {
+        if(k < 0) return N;  // invalid, return INF
+        if(left >= n or n - left <= k) return 0;  // empty
+        if(dp[left][k] != -1) return dp[left][k];
+        int res = N;
+
+        int cnt[26] = {0};
+        // we try to make s[left:j] (both inculded) as one group,
+        // and all chars in this group should be the same.
+        // so we must keep the most chars in this range and remove others
+        // the range length is (j - left + 1)
+        // and the number of chars we need to remove is (j - left + 1 - most)
+        for(int j = left, most = 0; j < n; j++) {
+            most = max(most, ++cnt[str[j] - 'a']);  // most = max(count(s[left:j])
+            res = min(res, 1 + xs(most) + solve(j + 1, k - (j - left + 1 - most)));
         }
-        return dp[left][K] = res;
+        return dp[left][k] = res;
     }
-    
+public:
     int getLengthOfOptimalCompression(string s, int k) {
         memset(dp, -1, sizeof(dp));
-        return dfs(s, 0, k);
+        str = s;
+        n = s.size();
+        return solve(0, k);
     }
 };
