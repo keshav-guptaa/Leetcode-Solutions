@@ -9,9 +9,10 @@ public:
     string kthSmallestPath(vector<int>& d, int k) {
         int h = d[1], v = d[0], tot = h+v;
         string ans = "";
+        long long c;
         for(int i = 0; i < tot; i++){
             if(h){
-                long long c = nCr(h+v-1, v);
+                c = nCr(h+v-1, v);
                 if(k <= c){
                     ans += 'H';
                     h--;
