@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int dp[105][1005][2];
+    int dp[105][105][2];
     
     int f(int idx, int m, int id, vector<int>& p){
         if(idx >= p.size()) return 0;
