@@ -1,7 +1,7 @@
 class Solution {
 public:
     const int mod = 1e9+7;
-    int dp[55][55][55], dr[4] = {-1, 0, 0, 1}, dc[4] = {0, -1, 1, 0};
+    int dp[50][50][51], dr[4] = {-1, 0, 0, 1}, dc[4] = {0, -1, 1, 0};
     
     int f(int r, int c, int moves, int m, int n){
         if(r < 0 || r >= m || c < 0 || c >= n) return 1;
