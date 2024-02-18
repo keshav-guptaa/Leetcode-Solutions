@@ -1,30 +1,31 @@
-class Solution {
+typedef long long ll;
+class Solution { 
 public:
-    
     long long countPrefixSuffixPairs(vector<string>& words) {
-        map<string,int> mp;
-        map<string,int> rev;
-        int n=words.size();
-        long long ans=0;
-        for(int i=0 ; i<n  ; i++){
-            string s=words[i];
-            string w1="";
-            string w2="";
-            for(int j=0 ; j<words[i].size() ; j++){
-                w1+=words[i][j];
-                w2+=words[i][words[i].size()-1-j];
-                if(mp.count(w1) && rev.count(w2)){
-                    string r=w2;
-                    reverse(r.begin(),r.end());
-                    if(r==w1){
-                        ans+=mp[w1];
-                    }
-                }
+        const int p = 31, mod = 1e9 + 9;
+        ll res = 0;
+        unordered_map<ll, int> hash;
+        
+        for(string word : words) {
+            ll prefix = 0, suffix = 0;
+            ll power = 1;
+            
+            int n = word.size();
+            
+            for(int i = 0, j = n - 1; i < n && j >= 0; i++, j--) {
+                prefix = (prefix + (word[i] - 'a' + 1) * power) % mod;
+                power = (power * p) % mod;
+                
+                suffix = (suffix * p + (word[j] - 'a' + 1)) % mod;
+                
+                if(prefix == suffix && hash.find(prefix) != hash.end())
+                    res += hash[prefix];
             }
-            mp[s]++;
-            reverse(s.begin(),s.end());
-            rev[s]++;
+            
+            hash[prefix]++;
+            // hash.insert(suffix);
         }
-        return ans;
+        
+        return res;
     }
 };
