@@ -11,7 +11,7 @@ public:
                     ans += temp;
                 }
                 temp = "";
-                if(ans.length() != 0 && ans[ans.length()-1] != ' ') ans += s[i];
+                if(ans.length() != 0 && ans[ans.length()-1] != ' ') ans += " ";
             }
         }
         if(temp.length() != 0){
