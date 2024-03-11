@@ -6,8 +6,7 @@ public:
         int sum = 0, ans = 0;
         for(int i = 0; i < nums.size(); i++){
             sum += nums[i];
-            int find = sum-k;
-            ans += m[find];
+            ans += m[sum-k];
             m[sum]++;
         }
         return ans;
