@@ -6,7 +6,7 @@ public:
         int sum = 0;
         for(int i = 0; i < nums.size(); i++){
             sum += nums[i];
-            if(k != 0) sum %= k;
+            sum %= k;
             
             if(m.find(sum) == m.end()) m[sum] = i;
             else{
