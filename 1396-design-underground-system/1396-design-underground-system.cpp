@@ -1,10 +1,12 @@
 class UndergroundSystem {
 public:
-    UndergroundSystem() {
-        
-    }
     unordered_map<int, pair<string, int>> in;
     unordered_map<string, pair<int, int>> m;
+    
+    UndergroundSystem() {
+        in.clear();
+        m.clear();
+    }
     
     void checkIn(int id, string s, int t) {
         in[id] = {s, t};
