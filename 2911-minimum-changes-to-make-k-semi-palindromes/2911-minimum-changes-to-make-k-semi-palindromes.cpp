@@ -8,7 +8,8 @@ class Solution {
     int n;
     string s;
 
-    int ChangesForSemiPalindrome (int l, int r) {
+    // Preprocessing
+    int preComp(int l, int r) {
         int n = r - l + 1;
         int ans = 1e9;
         for(auto &f: fact[n]){
@@ -26,6 +27,7 @@ class Solution {
         return ans;
     }
     
+    // Memoization
     int fun(int idx, int k){
         if (idx == n) return (k == 0 ? 0 : 1e9);
         if (k == 0) return 1e9;
@@ -43,14 +45,15 @@ public:
         s = _s;
         n = s.length();
         fact.clear(), fact.resize(n+1);
-        for (int j = 1; j <= n; j ++) {
+        // Factors of each number except itself
+        for (int j = 1; j <= n; j++) {
             for (int i = 2*j; i <= n; i += j) fact[i].push_back(j);
         }
         
-        //Precomputation
+        // Precomputation
         for (int j = 0; j < n; j ++) {
             for (int k = j; k < n; k ++)
-                changes[j][k] = ChangesForSemiPalindrome(j, k);
+                changes[j][k] = preComp(j, k);
         }
         
         memset(dp, -1, sizeof(dp));
