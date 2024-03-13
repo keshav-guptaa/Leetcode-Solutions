@@ -9,7 +9,7 @@ class Solution {
     string s;
 
     // Preprocessing
-    int preComp(int l, int r) {
+    int preComp(int l, int r){
         int n = r - l + 1;
         int ans = 1e9;
         for(auto &f: fact[n]){
@@ -34,7 +34,7 @@ class Solution {
         if (dp[idx][k] != -1) return dp[idx][k];
         
         int ans = 1e9;
-        for(int nxt = idx; nxt < n; nxt++) {
+        for(int nxt = idx; nxt < n; nxt++){
             ans = min(ans, changes[idx][nxt] + fun(nxt+1, k-1));
         }
         return dp[idx][k] = ans;
@@ -46,13 +46,13 @@ public:
         n = s.length();
         fact.clear(), fact.resize(n+1);
         // Factors of each number except itself
-        for (int j = 1; j <= n; j++) {
+        for (int j = 1; j <= n; j++){
             for (int i = 2*j; i <= n; i += j) fact[i].push_back(j);
         }
         
         // Precomputation
-        for (int j = 0; j < n; j ++) {
-            for (int k = j; k < n; k ++)
+        for (int j = 0; j < n; j++){
+            for (int k = j; k < n; k++)
                 changes[j][k] = preComp(j, k);
         }
         
