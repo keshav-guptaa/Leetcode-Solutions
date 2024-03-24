@@ -17,15 +17,18 @@ public:
             if(node->dict[s[i]-'a'] == NULL){
                 node->dict[s[i]-'a'] = new TrieNode();
             }
-            node = node->dict[s[i]-'a'];
             if(s.length() < node->smallest){
                 node->smallest = s.length();
                 node->idx = id;
             }
             else if(s.length() == node->smallest) node->idx = min(node->idx, id);
-            
+            node = node->dict[s[i]-'a'];
         }
-        
+        if(s.length() < node->smallest){
+                node->smallest = s.length();
+                node->idx = id;
+        }
+        else if(s.length() == node->smallest) node->idx = min(node->idx, id);
     }
     
     int startsWith(string s) {
@@ -39,17 +42,12 @@ public:
     }
     
     vector<int> stringIndices(vector<string>& wc, vector<string>& wq) {
-        int idx = 1e6, smallest = 1e4;
+        //int idx = 1e6, smallest = 1e4;
         for(int i = 0; i < wc.size(); i++){
             reverse(wc[i].begin(), wc[i].end());
             insert(wc[i], i);
-            if(wc[i].length() < smallest){
-                smallest = wc[i].length();
-                idx = i;
-            }
-            else if(wc[i].length() == smallest) idx = min(idx, i);
         } 
-        root->idx = idx; 
+        //root->idx = idx; 
         int n = wq.size();
         vector<int> ans(n);
         for(int i = 0; i < n; i++){
