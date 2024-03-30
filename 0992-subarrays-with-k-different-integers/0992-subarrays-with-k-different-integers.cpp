@@ -11,8 +11,8 @@ public:
                 if(m[nums[j]] == 0) k++;
                 j++;
             }
-            ans += (i-j+1);
             i++;
+            ans += (i-j);
         }
         return ans;
     }
