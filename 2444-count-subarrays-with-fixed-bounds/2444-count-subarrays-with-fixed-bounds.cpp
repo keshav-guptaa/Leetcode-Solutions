@@ -9,14 +9,11 @@ public:
         // Iterate over nums, for each number at index i:
         for (int i = 0; i < nums.size(); ++i) {
             // If the number is outside the range [minK, maxK], update the most recent leftBound.
-            if (nums[i] < minK || nums[i] > maxK)
-                leftBound = i;
+            if (nums[i] < minK || nums[i] > maxK) leftBound = i;
             
             // If the number is minK or maxK, update the most recent position.
-            if (nums[i] == minK) 
-                minPosition = i;
-            if (nums[i] == maxK)
-                maxPosition = i;
+            if (nums[i] == minK) minPosition = i;
+            if (nums[i] == maxK) maxPosition = i;
 
             // The number of valid subarrays equals the number of elements between leftBound and 
             // the smaller of the two most recent positions (minPosition and maxPosition).
