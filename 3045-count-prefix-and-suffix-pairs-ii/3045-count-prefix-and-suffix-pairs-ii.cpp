@@ -15,10 +15,10 @@ public:
         for(int i = 0; i < n; i++){
             pair<char, char> key = {s[i], s[n-i-1]};
             if(node->next[key] == NULL) node->next[key] = new TrieNode();
-            ans += node->ct;
             node = node->next[key];
+            ans += node->ct;
         }
-        ans += node->ct;
+        //ans += node->ct;
         node->ct++;
         return ans;
     }
