@@ -6,6 +6,7 @@ public:
         queue<int> q;
         for(auto &it: st) q.push(it);
         int j = 0;
+        
         while(!q.empty()){
             if((s[j] == 0 && ct0 == 0) || (s[j] == 1 && ct1 == 0)) return q.size();
             if(q.front() == s[j]){
@@ -13,6 +14,7 @@ public:
                 else ct0--;
                 j++;
                 q.pop();
+                
             }
             else{
                 q.push(q.front());
