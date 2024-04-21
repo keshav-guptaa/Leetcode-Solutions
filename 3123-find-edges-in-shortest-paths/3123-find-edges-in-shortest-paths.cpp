@@ -6,15 +6,16 @@ public:
         vector<long long> dist(n, 1e14);
         priority_queue<pi, vector<pi>, greater<>> pq;
         pq.push({0, src});
-        //dist[src] = 0;
+        dist[src] = 0;
         while(!pq.empty()){
             auto [d, node] = pq.top();
             pq.pop();
-            if(d > dist[node]) continue;
-            dist[node] = d;
             if(node == dst) break;
             for(auto& it: adj[node]){
-                pq.push({d + it[1], it[0]});   
+                if(it[1] + d < dist[it[0]]){
+                    dist[it[0]] = it[1] + d;
+                    pq.push({d + it[1], it[0]});
+                }   
             }
         }
         return dist;
