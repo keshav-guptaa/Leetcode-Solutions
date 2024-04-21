@@ -11,7 +11,7 @@ public:
             auto [d, node] = pq.top();
             pq.pop();
             //dist[node] = d;
-            //if(node == dst) break;
+            if(node == dst) break;
             for(auto& it: adj[node]){
                 if(d + it[1] < dist[it[0]]){
                     dist[it[0]] = d + it[1];
