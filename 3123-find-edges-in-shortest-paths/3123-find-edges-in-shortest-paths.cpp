@@ -6,7 +6,7 @@ public:
         vector<long long> dist(n, 1e14);
         priority_queue<pi, vector<pi>, greater<>> pq;
         pq.push({0, src});
-        dist[src] = 0;
+        //dist[src] = 0;
         while(!pq.empty()){
             auto [d, node] = pq.top();
             pq.pop();
