@@ -1,7 +1,7 @@
 class Solution {
 public:
-    int dr[4] = {0, -1, 1, 0};
-    int dc[4] = {-1, 0, 0, 1};
+    int dr[4] = {-1, 0, 1, 0};
+    int dc[4] = {0, -1, 0, 1};
     
     int maximumSafenessFactor(vector<vector<int>>& grid) {
         int n = grid.size();
