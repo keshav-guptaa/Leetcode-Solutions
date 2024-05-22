@@ -10,15 +10,14 @@ public:
         if(r2 == n-1 && c2 == n-1) return grid[r2][c2];
         if(dp[r1][c1][r2] != -1) return dp[r1][c1][r2];
         
-        int ch = 0;
-        if(r1 == r2 && c1 == c2) ch += grid[r1][c1];
-        else ch += grid[r1][c1] + grid[r2][c2];
+        int ch = grid[r1][c1];
+        if(r1 != r2 || c1 != c2) ch += grid[r2][c2];
         
         int rr = f(r1, c1+1, r2, grid, dp, n);
         int rd = f(r1, c1+1, r2+1, grid, dp, n);
         int dr = f(r1+1, c1, r2, grid, dp, n);
         int dd = f(r1+1, c1, r2+1, grid, dp, n);
-        ch += max(max(rr, rd), max(dr, dd));
+        ch += max({rr, rd, dr, dd});
         return dp[r1][c1][r2] = ch;
     }
     
