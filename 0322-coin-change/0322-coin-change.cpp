@@ -4,14 +4,14 @@ public:
         
         if(ind == 0){
             if(amount % coins[0] == 0) return amount/coins[ind];
-            return 1e9;
+            return 1e5;
         }
         
         //if(amount == 0) return 0;
         if(dp[ind][amount] != -1) return dp[ind][amount];
         
         int notPick = memoization(ind-1, amount, coins, dp);
-        int pick = 1e9;
+        int pick = 1e5;
         if(coins[ind] <= amount) pick = 1 + memoization(ind, amount - coins[ind], coins, dp);
         
         return dp[ind][amount] = min(pick, notPick);
@@ -40,6 +40,6 @@ public:
         vector<vector<int>> dp(n, vector<int>(amount + 1, -1));
         int ans = memoization(n-1, amount, coins, dp);
         //int ans = tabulation(n, amount, coins, dp);
-        return (ans >= 1e9) ? -1 : ans;
+        return (ans >= 1e5) ? -1 : ans;
     }
 };
