@@ -29,6 +29,6 @@ public:
         memset(dp, -1, sizeof dp);
         
         int ans = f(0, stickers, target);
-        return ans < 51 ? ans : -1;
+        return ans < 16 ? ans : -1;
     }
 };
