@@ -1,1 +1,1 @@
-Explanation => https://leetcode.com/problems/hand-of-straights/discuss/544206/C%2B%2B-Clean-readable-solution
+​
