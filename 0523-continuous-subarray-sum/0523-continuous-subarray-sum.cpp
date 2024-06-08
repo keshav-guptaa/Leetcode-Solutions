@@ -7,7 +7,6 @@ public:
         for(int i = 0; i < nums.size(); i++){
             sum += nums[i];
             sum %= k;
-            
             if(m.find(sum) == m.end()) m[sum] = i;
             else{
                 if(i-m[sum] >= 2) return true;
